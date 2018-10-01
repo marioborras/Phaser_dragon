@@ -1,11 +1,13 @@
-var game;
-var score;
-var soundOn = true;
-var useLandscape=false;
+let game;
+let score;
+let soundOn = true;
+let musicOn = true
+let useLandscape=false;
+
 
 window.onload = function () {
 
-var isMobile=navigator.userAgent.indexOf("Mobile");
+let isMobile=navigator.userAgent.indexOf("Mobile");
 if (isMobile>-1)
      {
         isMobile=true;
@@ -20,8 +22,8 @@ if (isMobile>-1)
         if (useLandscape == true) {
             game = new Phaser.Game(480, 640, Phaser.AUTO, "ph_game");
         } else {
-
-            game = new Phaser.Game(640, 480, Phaser.AUTO, "ph_game");
+            //browser view
+            game = new Phaser.Game(800, 480, Phaser.AUTO, "ph_game");
         }
 
     } else {
@@ -32,5 +34,6 @@ if (isMobile>-1)
     game.state.add("StateMain",StateMain);
     game.state.add("StateOver",StateOver);
     game.state.add("StateTitle",StateTitle);
-    game.state.start("StateMain");
+    game.state.add("StateInstructions",StateInstructions);
+    game.state.start("StateTitle");
 }
